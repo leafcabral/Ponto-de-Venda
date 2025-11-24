@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.minhaempresa.exemplopdv.views;
+package com.leafcabral.pontoDeVenda.views;
 
-import com.minhaempresa.exemplopdv.dao.ProdutoDAO;
-import com.minhaempresa.exemplopdv.models.Produto;
+import com.leafcabral.pontoDeVenda.dao.ProdutoDAO;
+import com.leafcabral.pontoDeVenda.models.Produto;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

@@ -2,19 +2,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package com.minhaempresa.exemplopdv.views;
+package com.leafcabral.pontoDeVenda.views;
 
-import com.minhaempresa.exemplopdv.dao.ClienteDAO;
-import com.minhaempresa.exemplopdv.dao.ProdutoDAO;
-import com.minhaempresa.exemplopdv.dao.RelatorioAnaliticoDAO;
-import com.minhaempresa.exemplopdv.dao.RelatorioSinteticoDAO;
-import com.minhaempresa.exemplopdv.dao.VendaDAO;
-import com.minhaempresa.exemplopdv.models.Cliente;
-import com.minhaempresa.exemplopdv.models.ItemVenda;
-import com.minhaempresa.exemplopdv.models.Produto;
-import com.minhaempresa.exemplopdv.models.RelatorioAnalitico;
-import com.minhaempresa.exemplopdv.models.RelatorioSintetico;
-import com.minhaempresa.exemplopdv.models.Venda;
+import com.leafcabral.pontoDeVenda.dao.ClienteDAO;
+import com.leafcabral.pontoDeVenda.dao.ProdutoDAO;
+import com.leafcabral.pontoDeVenda.dao.RelatorioAnaliticoDAO;
+import com.leafcabral.pontoDeVenda.dao.RelatorioSinteticoDAO;
+import com.leafcabral.pontoDeVenda.dao.VendaDAO;
+import com.leafcabral.pontoDeVenda.models.Cliente;
+import com.leafcabral.pontoDeVenda.models.ItemVenda;
+import com.leafcabral.pontoDeVenda.models.Produto;
+import com.leafcabral.pontoDeVenda.models.RelatorioAnalitico;
+import com.leafcabral.pontoDeVenda.models.RelatorioSintetico;
+import com.leafcabral.pontoDeVenda.models.Venda;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;

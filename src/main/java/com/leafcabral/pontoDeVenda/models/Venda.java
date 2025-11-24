@@ -1,4 +1,4 @@
-package com.minhaempresa.exemplopdv.models;
+package com.leafcabral.pontoDeVenda.models;
 
 import java.util.ArrayList;
 import java.util.Date;

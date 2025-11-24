@@ -1,7 +1,7 @@
-package com.minhaempresa.exemplopdv.dao;
+package com.leafcabral.pontoDeVenda.dao;
 
-import com.minhaempresa.exemplopdv.models.ItemVenda;
-import com.minhaempresa.exemplopdv.models.Venda;
+import com.leafcabral.pontoDeVenda.models.ItemVenda;
+import com.leafcabral.pontoDeVenda.models.Venda;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

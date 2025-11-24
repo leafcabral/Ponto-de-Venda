@@ -1,14 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.minhaempresa.exemplopdv.dao;
+package com.leafcabral.pontoDeVenda.dao;
 
-import static com.minhaempresa.exemplopdv.dao.ClienteDAO.URL;
-import static com.minhaempresa.exemplopdv.dao.ClienteDAO.login;
-import static com.minhaempresa.exemplopdv.dao.ClienteDAO.senha;
-import com.minhaempresa.exemplopdv.models.Cliente;
-import com.minhaempresa.exemplopdv.models.Produto;
+import com.leafcabral.pontoDeVenda.models.Cliente;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,13 +14,14 @@ import java.util.logging.Logger;
  *
  * @author ftfer
  */
-public class ProdutoDAO {
+public class ClienteDAO {
+    
     static String URL = "jdbc:mysql://localhost:3306/exemplopdv";
     static String login = "root";
     static String senha = "adminadmin";
     
     
-    public static boolean salvar(Produto obj){
+    public static boolean salvar(Cliente obj){
         Connection conexao = null;
         boolean retorno = false;
         
@@ -42,13 +35,12 @@ public class ProdutoDAO {
             
             //3) Preparar o comando SQL
             PreparedStatement instrucaoSQL = conexao.prepareStatement(
-                    "INSERT INTO Produto (codProduto, nomeProduto, qtdProduto, valorProduto) VALUES (?,?,?,?);"
+                    "INSERT INTO cliente (nomeCliente, cpf, emailCliente) VALUES (?,?,?);"
             );
             
-            instrucaoSQL.setInt(1, obj.getCodProduto());
-            instrucaoSQL.setString(2, obj.getNomeProduto());
-            instrucaoSQL.setInt(3, obj.getQtdProduto());
-            instrucaoSQL.setFloat(4, obj.getValorProduto());
+            instrucaoSQL.setString(1, obj.getNomeCliente());
+            instrucaoSQL.setString(2, obj.getCPF());
+            instrucaoSQL.setString(3, obj.getEmailCliente());
             
             //4) Executar o comando 
             int linhasAfetadas = instrucaoSQL.executeUpdate();
@@ -66,15 +58,15 @@ public class ProdutoDAO {
                 try {
                     conexao.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
         return retorno;
     }
     
-    public static ArrayList<Produto> listar(){
-        ArrayList<Produto> listaRetorno = new ArrayList<>();
+    public static ArrayList<Cliente> listar(){
+        ArrayList<Cliente> listaRetorno = new ArrayList<>();
         Connection conexao = null;
         ResultSet rs = null;
         
@@ -87,7 +79,7 @@ public class ProdutoDAO {
             
             //3) Preparar o comando SQL
             PreparedStatement instrucaoSQL = conexao.prepareStatement(
-                    "SELECT * FROM Produto;"
+                    "SELECT * FROM Cliente"
             );
             
             //4) Executar o comando SQL
@@ -97,14 +89,12 @@ public class ProdutoDAO {
                 
                 while(rs.next()){
                     
-                    int id = rs.getInt("idProduto");
-                    int codProduto = rs.getInt("codProduto");
-                    int qtdProduto = rs.getInt("qtdProduto");
-                    String nome = rs.getString("nomeProduto");
-                    float valor = rs.getFloat("valorProduto");
+                    int id = rs.getInt("idCliente");
+                    String nome = rs.getString("nomeCliente");
+                    String CPF = rs.getString("CPF");
+                    String email = rs.getString("emailCliente");
                     
-                    Produto item = new Produto(id, codProduto, nome, qtdProduto, valor);
-                    
+                    Cliente item = new Cliente(id, nome, email, CPF);
                     listaRetorno.add(item);
                 }
             
@@ -118,7 +108,7 @@ public class ProdutoDAO {
                 try {
                     conexao.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             
@@ -126,7 +116,7 @@ public class ProdutoDAO {
                 try {
                     rs.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
             
@@ -134,9 +124,69 @@ public class ProdutoDAO {
 
         return listaRetorno;
         
-    }
+    }//fim do listar
     
-    public static boolean alterar(Produto obj){
+   public static Cliente buscarPorCPF(String cpfBuscar){
+       Cliente retorno = null;
+       Connection conexao = null;
+       ResultSet rs = null;
+       
+       try {
+            //1) Carregar o driver o mysql
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            //2) Fazer conexão com o banco
+            conexao = DriverManager.getConnection(URL, login,senha);
+            
+            //3) Preparar o comando SQL
+            PreparedStatement instrucaoSQL = conexao.prepareStatement(
+                    "SELECT * FROM Cliente WHERE CPF = ?"
+            );
+            
+            instrucaoSQL.setString(1, cpfBuscar);
+            
+            rs = instrucaoSQL.executeQuery();
+            
+            if(rs !=null){
+                
+                while(rs.next()){
+                    int id = rs.getInt("idCliente");
+                    String nome = rs.getString("nomeCliente");
+                    String cpf = rs.getString("CPF");
+                    String email = rs.getString("emailCliente");
+                    
+                    retorno = new Cliente(id, nome, email, cpf);
+                }
+                
+            }
+       
+        }catch(Exception e){
+            retorno = null;
+        } finally {
+            
+            if(conexao!= null){
+                try {
+                    conexao.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+            if(rs!=null){
+                try {
+                    rs.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        }
+         
+        return retorno;
+   
+   }
+    
+    public static boolean alterar(Cliente obj){
         Connection conexao = null;
         boolean retorno = false;
         
@@ -150,14 +200,12 @@ public class ProdutoDAO {
             
             //3) Preparar o comando SQL
             PreparedStatement instrucaoSQL = conexao.prepareStatement(
-                    "UPDATE produto SET codProduto=?, nomeProduto=?, valorProduto=?, qtdProduto=?  WHERE idProduto = ?;"
+                    "UPDATE cliente SET nomeCliente=?, emailCliente=? WHERE idCliente = ?;"
             );
             
-            instrucaoSQL.setInt(1, obj.getCodProduto());
-            instrucaoSQL.setString(2, obj.getNomeProduto());
-            instrucaoSQL.setFloat(3, obj.getValorProduto());
-            instrucaoSQL.setInt(4, obj.getQtdProduto());
-            instrucaoSQL.setInt(5, obj.getIdProduto());
+            instrucaoSQL.setString(1, obj.getNomeCliente());
+            instrucaoSQL.setString(2, obj.getEmailCliente());
+            instrucaoSQL.setInt(3, obj.getIdCliente());
             
             //4) Executar o comando 
             int linhasAfetadas = instrucaoSQL.executeUpdate();
@@ -175,7 +223,7 @@ public class ProdutoDAO {
                 try {
                     conexao.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
@@ -196,7 +244,7 @@ public class ProdutoDAO {
             
             //3) Preparar o comando SQL
             PreparedStatement instrucaoSQL = conexao.prepareStatement(
-                    "DELETE FROM Produto WHERE idProduto = ?;"
+                    "DELETE FROM Cliente WHERE idCliente = ?;"
             );
             
             instrucaoSQL.setInt(1, idExcluir);
@@ -217,75 +265,11 @@ public class ProdutoDAO {
                 try {
                     conexao.close();
                 } catch (SQLException ex) {
-                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
         return retorno;
-    }
-    
-    public static Produto buscarPorCodigo(int codigo){
-        Produto retorno = null;
-        Connection conexao = null;
-        ResultSet rs = null;
-        
-        try {
-            //1) Carregar o driver o mysql
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            
-            //2) Fazer conexão com o banco
-            conexao = DriverManager.getConnection(URL, login,senha);
-            
-            //3) Preparar o comando SQL
-            PreparedStatement instrucaoSQL = conexao.prepareStatement(
-                    "SELECT * FROM Produto WHERE codProduto = ?"
-            );
-            
-            instrucaoSQL.setInt(1, codigo);
-            
-            
-            //4) Executar o comando SQL
-            rs = instrucaoSQL.executeQuery();
-            
-            if(rs !=null){
-                
-                while(rs.next()){
-                    
-                    int id = rs.getInt("idProduto");
-                    String nome = rs.getString("nomeProduto");
-                    int cod = rs.getInt("codProduto");
-                    int qtd = rs.getInt("qtdProduto");
-                    float valor = rs.getFloat("valorProduto");
-                    
-                    retorno = new Produto(id, codigo, nome, qtd, valor);
-                }
-            
-            }
-            
-        } catch (Exception e) {
-            retorno = null;
-        } finally {
-            
-            if(conexao!= null){
-                try {
-                    conexao.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            
-            if(rs!=null){
-                try {
-                    rs.close();
-                } catch (SQLException ex) {
-                    Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-            
-        }
-
-        return retorno;
-        
     }
     
 }

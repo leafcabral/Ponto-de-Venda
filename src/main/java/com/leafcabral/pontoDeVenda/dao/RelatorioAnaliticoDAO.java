@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.minhaempresa.exemplopdv.dao;
+package com.leafcabral.pontoDeVenda.dao;
 
-import static com.minhaempresa.exemplopdv.dao.VendaDAO.URL;
-import static com.minhaempresa.exemplopdv.dao.VendaDAO.login;
-import static com.minhaempresa.exemplopdv.dao.VendaDAO.senha;
-import com.minhaempresa.exemplopdv.models.RelatorioAnalitico;
-import com.minhaempresa.exemplopdv.models.RelatorioSintetico;
+import static com.leafcabral.pontoDeVenda.dao.VendaDAO.URL;
+import static com.leafcabral.pontoDeVenda.dao.VendaDAO.login;
+import static com.leafcabral.pontoDeVenda.dao.VendaDAO.senha;
+import com.leafcabral.pontoDeVenda.models.RelatorioAnalitico;
+import com.leafcabral.pontoDeVenda.models.RelatorioSintetico;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;

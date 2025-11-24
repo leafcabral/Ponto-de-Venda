@@ -1,12 +1,12 @@
-package com.minhaempresa.exemplopdv;
+package com.leafcabral.pontoDeVenda;
 
-import com.minhaempresa.exemplopdv.views.TelaPrincipal;
+import com.leafcabral.pontoDeVenda.views.TelaPrincipal;
 
 /**
  *
  * @author ftfer
  */
-public class Exemplopdv {
+public class PontoDeVenda {
     public static void main(String[] args) {
         TelaPrincipal tela = new TelaPrincipal();
         tela.setVisible(true);
