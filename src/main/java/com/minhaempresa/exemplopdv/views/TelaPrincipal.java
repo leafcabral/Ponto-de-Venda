@@ -38,9 +38,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
         cboProdutos.removeAllItems();
 
         ArrayList<Produto> listaProdutos =  ProdutoDAO.listar();
-        
-        for(Produto item : listaProdutos){
-            cboProdutos.addItem(item);
+        if (listaProdutos != null) {
+            for(Produto item : listaProdutos){
+                cboProdutos.addItem(item);
+            }
         }
         
     }
