@@ -105,7 +105,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
-        btnBuscarCPF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone_botao_buscar_lupa_32px.png"))); // NOI18N
+        btnBuscarCPF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search-icon.png"))); // NOI18N
         btnBuscarCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarCPFActionPerformed(evt);
@@ -134,7 +134,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setText("Valor Total:");
 
-        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconte_botao_confirmar_48px.png"))); // NOI18N
+        btnConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/check-icon.png"))); // NOI18N
         btnConfirmar.setText("Confirmar");
         btnConfirmar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnConfirmar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -144,7 +144,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone_botao_cancelar_48px.png"))); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cross-icon.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
         btnCancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnCancelar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -157,9 +157,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlVendaLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel1)
-                        .addGap(15, 15, 15)
+                        .addGap(18, 18, 18)
                         .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnBuscarCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,13 +198,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
             .addGroup(pnlVendaLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnlVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
-                    .addComponent(btnBuscarCPF)
                     .addGroup(pnlVendaLayout.createSequentialGroup()
                         .addComponent(lblNomeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)))
+                        .addGap(5, 5, 5))
+                    .addComponent(jLabel1)
+                    .addGroup(pnlVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtCPF, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnBuscarCPF, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(pnlVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -217,7 +217,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(pnlVendaLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(pnlVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -330,10 +330,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu1.setText("Arquivo");
 
-        mnuProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone_menu_produto_16px.png"))); // NOI18N
+        mnuProdutos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/box-open-full-icon.png"))); // NOI18N
         mnuProdutos.setText("Produtos");
 
-        mnuCadastrarProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        mnuCadastrarProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnuCadastrarProduto.setText("Cadastrar");
         mnuCadastrarProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -344,10 +344,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu1.add(mnuProdutos);
 
-        mnuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone_menu_cliente_16px.png"))); // NOI18N
+        mnuClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/user-icon.png"))); // NOI18N
         mnuClientes.setText("Clientes");
 
-        mnuCadastrarClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        mnuCadastrarClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         mnuCadastrarClientes.setText("Cadastrar");
         mnuCadastrarClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -358,7 +358,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         jMenu1.add(mnuClientes);
 
-        mnuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone_menu_sair_16px.png"))); // NOI18N
+        mnuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.SHIFT_DOWN_MASK | java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mnuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/exit-icon.png"))); // NOI18N
         mnuSair.setText("Sair");
         mnuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

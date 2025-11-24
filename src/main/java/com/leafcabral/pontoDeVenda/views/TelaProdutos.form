@@ -163,7 +163,7 @@
             <Component class="javax.swing.JButton" name="btnConfirmarCadastroProduto">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/iconte_botao_confirmar_48px.png"/>
+                  <Image iconType="3" name="/check-icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Confirmar"/>
               </Properties>
@@ -174,7 +174,7 @@
             <Component class="javax.swing.JButton" name="btnCancelarCadastroProduto">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icone_botao_cancelar_48px.png"/>
+                  <Image iconType="3" name="/cross-icon.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>

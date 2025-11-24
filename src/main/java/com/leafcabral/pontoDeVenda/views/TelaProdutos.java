@@ -72,7 +72,7 @@ public class TelaProdutos extends javax.swing.JFrame {
 
         jLabel6.setText("Código:");
 
-        btnConfirmarCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconte_botao_confirmar_48px.png"))); // NOI18N
+        btnConfirmarCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/check-icon.png"))); // NOI18N
         btnConfirmarCadastroProduto.setText("Confirmar");
         btnConfirmarCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +80,7 @@ public class TelaProdutos extends javax.swing.JFrame {
             }
         });
 
-        btnCancelarCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone_botao_cancelar_48px.png"))); // NOI18N
+        btnCancelarCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cross-icon.png"))); // NOI18N
         btnCancelarCadastroProduto.setText("Cancelar");
 
         javax.swing.GroupLayout pnlCadastroProdutoLayout = new javax.swing.GroupLayout(pnlCadastroProduto);

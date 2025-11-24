@@ -72,7 +72,7 @@ public class TelaClientes extends javax.swing.JFrame {
 
         jLabel4.setText("Email:");
 
-        btnConfirmarCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconte_botao_confirmar_48px.png"))); // NOI18N
+        btnConfirmarCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/check-icon.png"))); // NOI18N
         btnConfirmarCadastroCliente.setText("Confirmar");
         btnConfirmarCadastroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +80,7 @@ public class TelaClientes extends javax.swing.JFrame {
             }
         });
 
-        btnCancelarCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icone_botao_cancelar_48px.png"))); // NOI18N
+        btnCancelarCadastroCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cross-icon.png"))); // NOI18N
         btnCancelarCadastroCliente.setText("Cancelar");
 
         javax.swing.GroupLayout pnlCadastroClienteLayout = new javax.swing.GroupLayout(pnlCadastroCliente);
