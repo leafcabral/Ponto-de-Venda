@@ -20,11 +20,31 @@ public class RelatorioSinteticoDAO extends DatabaseDAO {
 			conexao = getConnection();
 			
 			String sql = "SELECT Venda.idVenda, Venda.idCliente, Cliente.nomeCliente, Venda.dataVenda, Venda.valorVenda FROM Venda "
-					+ "	 INNER JOIN Cliente ON Venda.idCliente = Cliente.idCliente"
-					+ "	 WHERE dataVenda BETWEEN ? AND ?";
+					+ "	 INNER JOIN Cliente ON Venda.idCliente = Cliente.idCliente";
+			
+			if (dtInicio != null || dtTermino != null) {
+			    sql += " WHERE ";
+
+			    if (dtInicio != null && dtTermino != null) {
+				sql += "dataVenda >= ? AND dataVenda <= ?";
+			    } else if (dtInicio != null) {
+				sql += "dataVenda >= ?";
+			    } else if (dtTermino != null) {
+				sql += "dataVenda <= ?";
+			    }
+			}
+			sql += (" ORDER BY Venda.dataVenda DESC");
+        
 			comandoSQL = conexao.prepareStatement(sql);
-			comandoSQL.setDate(1, new java.sql.Date(dtInicio.getTime())  );
-			comandoSQL.setDate(2, new java.sql.Date(dtTermino.getTime())  );
+			int paramIndex = 1;
+			if (dtInicio != null && dtTermino != null) {
+				comandoSQL.setDate(paramIndex++, new java.sql.Date(dtInicio.getTime()));
+				comandoSQL.setDate(paramIndex++, new java.sql.Date(dtTermino.getTime()));
+			} else if (dtInicio != null) {
+				comandoSQL.setDate(paramIndex++, new java.sql.Date(dtInicio.getTime()));
+			} else if (dtTermino != null) {
+				comandoSQL.setDate(paramIndex++, new java.sql.Date(dtTermino.getTime()));
+			}
 			
 			rs = comandoSQL.executeQuery();
 			
@@ -55,5 +75,4 @@ public class RelatorioSinteticoDAO extends DatabaseDAO {
 		
 		return listaRetorno;
 	}
-	
 }
