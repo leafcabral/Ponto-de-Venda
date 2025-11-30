@@ -185,4 +185,36 @@ public class ProdutoDAO extends DatabaseDAO {
 		
 	}
 	
+	public static ArrayList<Produto> buscarPorNomeParcial(String nomeParcial) {
+		Connection conexao = null;
+		PreparedStatement comandoSQL = null;
+		ResultSet rs = null;
+		ArrayList<Produto> lista = new ArrayList<>();
+
+		try {
+			conexao = getConnection();
+			
+			String sql = "SELECT * FROM Produto WHERE nomeProduto LIKE ? ORDER BY nomeProduto";
+			comandoSQL = conexao.prepareStatement(sql);
+			comandoSQL.setString(1, "%" + nomeParcial + "%");
+			rs = comandoSQL.executeQuery();
+
+			while (rs.next()) {
+				Produto produto = new Produto(
+					rs.getInt("idProduto"),
+					rs.getInt("codProduto"),
+					rs.getString("nomeProduto"),
+					rs.getInt("qtdProduto"),
+					rs.getFloat("valorProduto")
+				);
+				lista.add(produto);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			lista = null;
+		} finally {
+			closeAll(conexao, comandoSQL, rs);
+		}
+		return lista;
+	}
 }

@@ -16,12 +16,14 @@ import com.leafcabral.pontoDeVenda.models.RelatorioAnalitico;
 import com.leafcabral.pontoDeVenda.models.RelatorioSintetico;
 import com.leafcabral.pontoDeVenda.models.Venda;
 import java.awt.Desktop;
+import java.awt.Image;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -48,8 +50,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		initComponents();
 		
 		recarregarTabelaVendas();
+		pesquisarRelatorio();
 		
 		this.setLocationRelativeTo(null);
+		
+		try {
+			Image i = ImageIO.read(getClass().getResource("/APP-ICON.png"));
+			this.setIconImage(i);
+		} catch (Exception e) { e.printStackTrace(); }
 	}
 
 	/**
@@ -452,6 +460,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 ajudaMenu.setText("Ajuda");
 
                 visitarCodigoFonteMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+                visitarCodigoFonteMenuItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/github.png"))); // NOI18N
                 visitarCodigoFonteMenuItem.setText("Visitar código-fonte");
                 visitarCodigoFonteMenuItem.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -586,8 +595,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 		System.exit(0);
     }//GEN-LAST:event_mnuSairActionPerformed
 
-    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-		
+	private void pesquisarRelatorio() {
 		Date dataInicio = inicioDataChooser.getDate();
 		Date dataTermino = fimDataChooser.getDate();
 		
@@ -606,7 +614,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			});
 			
 		}
-		
+	}
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+		pesquisarRelatorio();
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
     private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed

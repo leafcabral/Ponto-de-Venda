@@ -99,6 +99,9 @@
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
                   <KeyStroke key="F1"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/github.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Visitar c&#xf3;digo-fonte"/>
               </Properties>
               <Events>

@@ -3,6 +3,8 @@ package com.leafcabral.pontoDeVenda;
 import com.leafcabral.pontoDeVenda.views.TelaPrincipal;
 import javax.swing.UIManager;
 import com.formdev.flatlaf.FlatLightLaf;
+import java.awt.Image;
+import javax.imageio.ImageIO;
 
 /**
  *

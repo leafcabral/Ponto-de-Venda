@@ -178,4 +178,35 @@ public class ClienteDAO extends DatabaseDAO {
 		return retorno;
 	}
 	
+	public static ArrayList<Cliente> buscarPorNomeParcial(String nomeParcial) {
+		Connection conexao = null;
+		PreparedStatement comandoSQL = null;
+		ResultSet rs = null;
+		ArrayList<Cliente> lista = new ArrayList<>();
+
+		try {
+			conexao = getConnection();
+			String sql = "SELECT * FROM Cliente WHERE nomeCliente LIKE ? ORDER BY nomeCliente";
+			comandoSQL = conexao.prepareStatement(sql);
+			comandoSQL.setString(1, "%" + nomeParcial + "%");
+			rs = comandoSQL.executeQuery();
+
+			while (rs.next()) {
+				Cliente cliente = new Cliente(
+					rs.getInt("idCliente"),
+					rs.getString("nomeCliente"),
+					rs.getString("emailCliente"),
+					rs.getString("CPF")
+				);
+				lista.add(cliente);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			lista = null;
+		} finally {
+			closeAll(conexao, comandoSQL, rs);
+		}
+		return lista;
+	}
+	
 }

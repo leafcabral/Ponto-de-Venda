@@ -6,7 +6,9 @@ package com.leafcabral.pontoDeVenda.views;
 
 import com.leafcabral.pontoDeVenda.dao.ProdutoDAO;
 import com.leafcabral.pontoDeVenda.models.Produto;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +27,11 @@ public class TelaProdutos extends javax.swing.JFrame {
 		initComponents();
 		this.setLocationRelativeTo(null);
 		this.pnlGuiasProduto.setSelectedIndex(tab);
+		
+		try {
+			Image i = ImageIO.read(getClass().getResource("/APP-ICON.png"));
+			this.setIconImage(i);
+		} catch (Exception e) { }
 	}
 
 	/**
@@ -52,27 +59,35 @@ public class TelaProdutos extends javax.swing.JFrame {
                 btnCancelarCadastroProduto = new javax.swing.JButton();
                 pnlConsultaProduto = new javax.swing.JPanel();
                 jLabel5 = new javax.swing.JLabel();
-                jTextField1 = new javax.swing.JTextField();
+                nomeTextField = new javax.swing.JTextField();
                 btnPesquisarProduto = new javax.swing.JButton();
                 jScrollPane1 = new javax.swing.JScrollPane();
                 tblProdutos = new javax.swing.JTable();
                 btnAlterar = new javax.swing.JButton();
-                btnAdicionar = new javax.swing.JButton();
                 btnExcluir = new javax.swing.JButton();
 
                 setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
                 setTitle("Editar/Ver Produtos");
 
-                jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+                jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
                 jLabel1.setText("ID:");
                 jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
+                jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
                 jLabel2.setText("Nome:");
 
+                jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
                 jLabel3.setText("Valor:");
 
+                jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
                 jLabel4.setText("Qtd:");
 
+                jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+                jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
                 jLabel6.setText("Código:");
 
                 btnConfirmarCadastroProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/check-icon.png"))); // NOI18N
@@ -91,45 +106,40 @@ public class TelaProdutos extends javax.swing.JFrame {
                 pnlCadastroProdutoLayout.setHorizontalGroup(
                         pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlCadastroProdutoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(pnlCadastroProdutoLayout.createSequentialGroup()
-                                                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addComponent(jLabel6)
-                                                        .addComponent(jLabel4)
-                                                        .addComponent(jLabel3)
-                                                        .addComponent(jLabel2)
-                                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addComponent(txtNomeProdutoCadastro)
-                                                        .addGroup(pnlCadastroProdutoLayout.createSequentialGroup()
-                                                                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(txtCodigoProdutoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(txtValorProdutoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(txtQtdProdutoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                        .addComponent(lblIDProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                .addGap(0, 0, Short.MAX_VALUE))))
-                                        .addGroup(pnlCadastroProdutoLayout.createSequentialGroup()
-                                                .addComponent(btnConfirmarCadastroProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnCancelarCadastroProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap())
+                                .addGap(16, 16, 16)
+                                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel2)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(txtQtdProdutoCadastro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                                        .addComponent(txtValorProdutoCadastro, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(txtCodigoProdutoCadastro)
+                                        .addComponent(txtNomeProdutoCadastro)
+                                        .addComponent(lblIDProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(btnConfirmarCadastroProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                                        .addComponent(btnCancelarCadastroProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(22, Short.MAX_VALUE))
                 );
 
-                pnlCadastroProdutoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnCancelarCadastroProduto, btnConfirmarCadastroProduto});
+                pnlCadastroProdutoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jLabel1, jLabel2, jLabel3, jLabel4, jLabel6});
 
                 pnlCadastroProdutoLayout.setVerticalGroup(
                         pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlCadastroProdutoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblIDProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(5, 5, 5)
+                                .addGap(13, 13, 13)
+                                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                                        .addComponent(lblIDProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
                                 .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel6)
-                                        .addComponent(txtCodigoProdutoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtCodigoProdutoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel6))
                                 .addGap(18, 18, 18)
                                 .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel2)
@@ -137,25 +147,30 @@ public class TelaProdutos extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel3)
-                                        .addComponent(txtValorProdutoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtValorProdutoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnConfirmarCadastroProduto))
                                 .addGap(18, 18, 18)
                                 .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(jLabel4)
-                                        .addComponent(txtQtdProdutoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                                .addGroup(pnlCadastroProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(btnCancelarCadastroProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnConfirmarCadastroProduto, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
-                                .addContainerGap())
+                                        .addComponent(txtQtdProdutoCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(btnCancelarCadastroProduto))
+                                .addContainerGap(42, Short.MAX_VALUE))
                 );
+
+                pnlCadastroProdutoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnCancelarCadastroProduto, txtQtdProdutoCadastro});
+
+                pnlCadastroProdutoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnConfirmarCadastroProduto, txtValorProdutoCadastro});
 
                 pnlGuiasProduto.addTab("Cadastrar", pnlCadastroProduto);
 
+                jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
                 jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
                 jLabel5.setText("Nome:");
 
-                jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+                nomeTextField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+                nomeTextField.setPreferredSize(new java.awt.Dimension(64, 22));
 
+                btnPesquisarProduto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/search-icon.png"))); // NOI18N
                 btnPesquisarProduto.setText("Pesquisar");
                 btnPesquisarProduto.addActionListener(new java.awt.event.ActionListener() {
                         public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,8 +195,6 @@ public class TelaProdutos extends javax.swing.JFrame {
                         }
                 });
 
-                btnAdicionar.setText("Adicionar");
-
                 btnExcluir.setBackground(new java.awt.Color(255, 102, 102));
                 btnExcluir.setText("Excluir");
                 btnExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -195,18 +208,20 @@ public class TelaProdutos extends javax.swing.JFrame {
                 pnlConsultaProdutoLayout.setHorizontalGroup(
                         pnlConsultaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlConsultaProdutoLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(pnlConsultaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(jScrollPane1)
+                                .addGroup(pnlConsultaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(pnlConsultaProdutoLayout.createSequentialGroup()
-                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(12, 12, 12)
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 389, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(nomeTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(btnPesquisarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConsultaProdutoLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(pnlConsultaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnPesquisarProduto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnAdicionar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(btnAlterar, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)
                                         .addComponent(btnExcluir, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
                 );
@@ -214,21 +229,22 @@ public class TelaProdutos extends javax.swing.JFrame {
                         pnlConsultaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnlConsultaProdutoLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(pnlConsultaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(btnPesquisarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(pnlConsultaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(pnlConsultaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(nomeTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+                                                .addComponent(jLabel5))
+                                        .addComponent(btnPesquisarProduto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlConsultaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(pnlConsultaProdutoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(pnlConsultaProdutoLayout.createSequentialGroup()
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlConsultaProdutoLayout.createSequentialGroup()
                                                 .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(btnExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(133, Short.MAX_VALUE))
+                                .addContainerGap(15, Short.MAX_VALUE))
                 );
+
+                pnlConsultaProdutoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnPesquisarProduto, nomeTextField});
 
                 pnlGuiasProduto.addTab("Consultar", pnlConsultaProduto);
 
@@ -357,9 +373,16 @@ public class TelaProdutos extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConfirmarCadastroProdutoActionPerformed
 
     private void btnPesquisarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarProdutoActionPerformed
+		String nomePesquisa = nomeTextField.getText().trim();
 		
-		ArrayList<Produto> listaRetorno = ProdutoDAO.listar();
+		ArrayList<Produto> listaRetorno;
 		
+		listaRetorno = ProdutoDAO.listar();
+		if (nomePesquisa.isEmpty()) {
+			listaRetorno = ProdutoDAO.listar();
+		} else {
+			listaRetorno = ProdutoDAO.buscarPorNomeParcial(nomePesquisa);
+		}
 		DefaultTableModel modeloProdutos = (DefaultTableModel) tblProdutos.getModel();
 		
 		modeloProdutos.setRowCount(0);
@@ -442,7 +465,6 @@ public class TelaProdutos extends javax.swing.JFrame {
 	}
 
         // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JButton btnAdicionar;
         private javax.swing.JButton btnAlterar;
         private javax.swing.JButton btnCancelarCadastroProduto;
         private javax.swing.JButton btnConfirmarCadastroProduto;
@@ -455,8 +477,8 @@ public class TelaProdutos extends javax.swing.JFrame {
         private javax.swing.JLabel jLabel5;
         private javax.swing.JLabel jLabel6;
         private javax.swing.JScrollPane jScrollPane1;
-        private javax.swing.JTextField jTextField1;
         private javax.swing.JLabel lblIDProduto;
+        private javax.swing.JTextField nomeTextField;
         private javax.swing.JPanel pnlCadastroProduto;
         private javax.swing.JPanel pnlConsultaProduto;
         private javax.swing.JTabbedPane pnlGuiasProduto;
