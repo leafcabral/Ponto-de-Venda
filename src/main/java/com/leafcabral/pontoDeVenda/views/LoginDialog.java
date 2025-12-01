@@ -214,10 +214,30 @@ public class LoginDialog extends javax.swing.JDialog {
 			return;
 		}
 		
-		// Set database credentials
 		DatabaseDAO.setDatabaseCredentials(host, usuario, senha);
+		try {
+			if (!DatabaseDAO.databaseExists()) {
+				int choice = JOptionPane.showConfirmDialog(
+					null,
+					"O banco de dado não está presente em sua máquina.\n Deseja cria-lo?",
+					"Confirmação",
+					JOptionPane.YES_NO_OPTION
+				);
+				
+				if (choice == JOptionPane.YES_OPTION) {
+					DatabaseDAO.createDatabase();
+					DatabaseDAO.setDatabase();
+				} else {
+					System.exit(0);
+				}
+			}
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(this,
+				"Erro ao criar banco de dado.", "Erro", JOptionPane.ERROR_MESSAGE
+			);
+			e.printStackTrace();
+		}
 		
-		// Test connection
 		if (DatabaseDAO.testConnection()) {
 			loginSuccessful = true;
 			JOptionPane.showMessageDialog(this, 

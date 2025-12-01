@@ -18,7 +18,6 @@ import com.leafcabral.pontoDeVenda.models.Venda;
 import java.awt.Desktop;
 import java.awt.Image;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -40,6 +39,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 	 * Creates new form TelaPrincipal
 	 */
 	public TelaPrincipal() {
+		initComponents();
+		this.setLocationRelativeTo(null);
+		
 		LoginDialog login = new LoginDialog(this, true);
 		login.setVisible(true);
 		if (!login.isLoginSuccessful()) {
@@ -47,12 +49,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 			return;
 		}
 		
-		initComponents();
-		
 		recarregarTabelaVendas();
 		pesquisarRelatorio();
 		
-		this.setLocationRelativeTo(null);
 		
 		try {
 			Image i = ImageIO.read(getClass().getResource("/APP-ICON.png"));

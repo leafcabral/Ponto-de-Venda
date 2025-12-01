@@ -1,13 +1,19 @@
 package com.leafcabral.pontoDeVenda.dao;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Scanner;
+import static jdk.jfr.internal.SecuritySupport.getResourceAsStream;
 
 public abstract class DatabaseDAO {
-	protected static String URL = "jdbc:mysql://localhost:3306/exemplopdv";
+	protected static String database = "exemplopdv";
+	protected static String URL = "jdbc:mysql://localhost:3306/";
 	protected static String login = "root";
 	protected static String senha = "adminadmin";
 	protected static final String DRIVER = "com.mysql.cj.jdbc.Driver";
@@ -16,6 +22,29 @@ public abstract class DatabaseDAO {
 		URL = url;
 		login = user;
 		senha = password;
+	}
+	public static void setDatabase() { URL += database; }
+	
+	public static boolean databaseExists() throws SQLException, ClassNotFoundException {
+		Connection connection = getConnection();
+		PreparedStatement sql = connection.prepareStatement(
+			"SHOW DATABASES LIKE ?"
+		);
+		sql.setString(1, database);
+
+		ResultSet rs = sql.executeQuery();
+		if (rs.next()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public static void createDatabase() throws SQLException, ClassNotFoundException, IOException {
+		Connection connection = getConnection();
+		InputStream file = getResourceAsStream("/DumpBancoPDV.sql");
+		
+		String sql = new Scanner(file).next();
+		connection.createStatement().execute(sql);
 	}
 	
 	protected static Connection getConnection() throws SQLException, ClassNotFoundException {
